@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Search Bar</title>
+  <style>
+    /* Body Styling */
+    body {
+      margin: 0;
+      background: #222;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Search Bar Container */
+    .search-container {
+      position: relative;
+      width: 300px;
+      height: 50px;
+    }
+
+    /* Input Field */
+    .search-input {
+      width: 100%;
+      height: 100%;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #fff;
+      background: #333;
+      border: 2px solid #555;
+      border-radius: 25px;
+      outline: none;
+      transition: width 0.5s ease-in-out, background 0.3s;
+      width: 50px; /* Collapsed width */
+      cursor: pointer;
+    }
+
+    .search-input:focus {
+      width: 100%; /* Expanded width */
+      background: #444;
+      cursor: text;
+    }
+
+    /* Placeholder Styling */
+    .search-input::placeholder {
+      color: #bbb;
+      opacity: 0.6;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .search-input:focus::placeholder {
+      opacity: 0; /* Hide placeholder on focus */
+    }
+  </style>
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search here...">
+  </div>
+
+  <script>
+    // Get the search input field
+    const searchInput = document.querySelector('.search-input');
+    const searchContainer = document.querySelector('.search-container');
+
+    // Add an event listener to detect "Enter" keypress
+    searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+          alert(`Searching for: ${query}`);
+          searchInput.value = ''; // Clear the search input after "search"
+        }
+      }
+    });
+
+    // Add an event listener to detect clicks outside the search bar
+    document.addEventListener('click', (event) => {
+      if (!searchContainer.contains(event.target)) {
+        searchInput.blur(); // Remove focus from the search bar
+        searchInput.value = ''; // Optionally clear the input
+      }
+    });
+  </script>
+</body>
+</html>

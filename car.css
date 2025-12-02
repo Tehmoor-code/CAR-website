@@ -1,0 +1,342 @@
+ /* Reset and Base Styles */
+ body {
+  margin: 0;
+  background: #222;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  opacity: 0; /* Start fully transparent */
+  animation: fadeIn 1.5s ease-in-out forwards; /* Apply the animation */
+}
+
+/* Navbar Styling */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  padding: 10px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+/* Logo Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #f00;
+  border-top: 6px solid #fff;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+.logo-text {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Navbar Links */
+.nav-links {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 15px;
+  position: relative;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px; /* Reduced font size */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px;
+  transition: color 0.3s ease-in-out;
+  position: relative;
+}
+
+.nav-links li a:hover {
+  color: #f00;
+}
+
+/* Burst Animation for Links (Yellow Color) */
+.nav-links li a:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: yellow; /* Changed color to yellow */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+  z-index: -1; /* Ensure burst animation doesn't hide text */
+}
+
+.nav-links li a:hover:after {
+  width: 300%;
+  height: 300%;
+}
+
+/* Search Bar Styling */
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  width: 50px;
+  height: 40px;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  background: #444;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  transition: width 0.5s ease-in-out;
+}
+
+.search-input:focus {
+  width: 250px; /* Expanded width */
+  background: #555;
+  cursor: text;
+}
+
+/* Spin Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+  /* Hero Section with Background Image */
+  #hero {
+    background: url('costome\ car\ 1.jpg') no-repeat center center/cover;
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  #hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+  }
+  
+  #hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  #hero .btn-primary {
+    background-color: #f9a825;
+    color: black;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    text-decoration: none;
+  }
+  
+  #hero .btn-primary:hover {
+    background-color: #f57f17;
+  }
+  
+  /* Services Section with Hover Animation */
+  #services {
+    background-color: white;
+    padding: 80px 0;
+    text-align: center;
+       
+    
+  }
+  
+  #services h2 {
+    font-size: 2.5rem;
+      color: black;
+  }
+  
+  .services-cards {
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+       
+  }
+  
+  .service-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .service-card .service-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+  
+  .service-card:hover .service-image {
+    opacity: 1;
+  }
+  
+  .service-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .service-card:hover img {
+    transform: scale(1.1);
+  }
+  
+  .service-card .service-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .service-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #222;
+  }
+  
+  .service-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Gallery Section */
+  #gallery {
+    background-color: #fafafa;
+    padding: 80px 0;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .gallery-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Our Team Section */
+  #team {
+    background-color: white;
+    padding: 80px 0;
+    text-align: center;
+  }
+  
+  #team h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #222;
+  }
+  
+  .team-members {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .team-member {
+    width: 30%;
+    text-align: center;
+  }
+  
+  .team-member img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .team-member h3 {
+    font-size: 1.5rem;
+    color: #222;
+  }
+  
+  .team-member p {
+    font-size: 1.1rem;
+    color: #777;
+  }
+  
+  /* Footer Section */
+  footer {
+    background-color: #222;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  footer .social-links a,
+  footer .footer-links a {
+    margin: 0 15px;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  footer .social-links a:hover,
+  footer .footer-links a:hover {
+    color: #f9a825;
+  }
+  
+  footer p {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Optional: starts slightly lower */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Ends at the original position */
+    }
+  }
+  

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speed Boost Navbar</title>
+  <style>
+    /* Body Styling */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #fff;
+    }
+
+    /* Navbar Styling */
+    .speed-navbar {
+      position: absolute; /* Allows precise positioning */
+      top: 20px; /* Distance from the top */
+      left: 50%; /* Horizontal center alignment */
+      transform: translateX(-50%); /* Adjust to the center */
+      background: #111;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .speed-navbar ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+    }
+
+    .speed-navbar li {
+      position: relative;
+    }
+
+    .speed-navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .speed-navbar a:hover {
+      color: #f00;
+    }
+
+    .menu-item:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #f00;
+      transition: width 0.3s ease, transform 0.3s ease;
+      transform: translateY(-50%);
+    }
+
+    .menu-item:hover:after {
+      width: 100%;
+    }
+
+    /* Speed Boost Effect */
+    .speed-boost {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 0, 0, 0.8), transparent);
+      opacity: 0.6;
+      animation: boost 0.5s ease-out;
+    }
+
+    @keyframes boost {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="speed-navbar">
+    <ul>
+      <li><a href="#home" class="menu-item">Home</a></li>
+      <li><a href="#cars" class="menu-item">Cars</a></li>
+      <li><a href="#services" class="menu-item">Services</a></li>
+      <li><a href="#contact" class="menu-item">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    document.querySelectorAll('.menu-item').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Create the speed boost effect
+        const boost = document.createElement('span');
+        boost.classList.add('speed-boost');
+        item.parentElement.appendChild(boost);
+
+        // Remove the effect after animation
+        setTimeout(() => boost.remove(), 500);
+
+        // Simulate navigation or add a delay for page change
+        setTimeout(() => {
+          alert(`Navigating to ${e.target.innerText}`);
+        }, 300);
+      });
+    });
+  </script>
+</body>
+</html>

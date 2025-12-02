@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Navbar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px; /* Adjust height as needed */
+        }
+
+        .navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center the items horizontally */
+            align-items: center; /* Center the items vertically */
+            width: 100%;
+        }
+
+        .navbar li {
+            margin: 0 10px; /* Add space between items */
+        }
+
+        .navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            background-color: #111;
+            transform: rotate(360deg);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .logo img {
+            height: 40px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .logo:hover img {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li class="logo"><img src="logo.png" alt="Logo"></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

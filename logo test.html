@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Logo</title>
+  <style>
+    /* Body Styling */
+    body {
+      margin: 0;
+      background: #222;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Logo Container */
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    /* Rotating Logo */
+    .logo {
+      width: 100px;
+      height: 100px;
+      border: 8px solid #f00; /* Red outer rim */
+      border-top: 8px solid #fff; /* White segment for animation */
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+    }
+
+    /* Text Below Logo */
+    .logo-text {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Animation */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Faster spin class */
+    .fast-spin {
+      animation-duration: 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <div class="logo"></div>
+    <div class="logo-text">CarMotion</div>
+  </div>
+
+  <script>
+    // Select the logo element
+    const logo = document.querySelector('.logo');
+    const container = document.querySelector('.logo-container');
+
+    // Add event listener for hover (increase spin speed)
+    container.addEventListener('mouseenter', () => {
+      logo.classList.add('fast-spin');
+    });
+
+    // Add event listener to reset spin speed on mouse leave
+    container.addEventListener('mouseleave', () => {
+      logo.classList.remove('fast-spin');
+    });
+
+    // Add event listener for click (toggle spin direction)
+    container.addEventListener('click', () => {
+      const currentDirection = getComputedStyle(logo).getPropertyValue('animation-direction');
+      logo.style.animationDirection = currentDirection === 'normal' ? 'reverse' : 'normal';
+    });
+  </script>
+</body>
+</html>

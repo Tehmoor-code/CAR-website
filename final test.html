@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar with Burst Animation</title>
+  <style>
+    /* General Body Styling */
+    body {
+      margin: 0;
+      background: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    }
+
+    /* Navbar Styling */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      padding: 10px 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    /* Logo Container */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border: 6px solid #f00;
+      border-top: 6px solid #fff;
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+    }
+
+    .logo-text {
+      margin-left: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* Navbar Links */
+    .nav-links {
+      display: flex;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+    }
+
+    .nav-links li {
+      margin: 0 15px;
+      position: relative;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px; /* Reduced font size */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px;
+      transition: color 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .nav-links li a:hover {
+      color: #f00;
+    }
+
+    /* Burst Animation for Links (Yellow Color) */
+    .nav-links li a:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: yellow; /* Changed color to yellow */
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+      z-index: -1; /* Ensure burst animation doesn't hide text */
+    }
+
+    .nav-links li a:hover:after {
+      width: 300%;
+      height: 300%;
+    }
+
+    /* Search Bar Styling */
+    .search-container {
+      position: relative;
+    }
+
+    .search-input {
+      width: 50px;
+      height: 40px;
+      padding: 10px;
+      font-size: 18px;
+      color: #fff;
+      background: #444;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .search-input:focus {
+      width: 250px; /* Expanded width */
+      background: #555;
+      cursor: text;
+    }
+
+    /* Spin Animation */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <div class="logo"></div>
+      <div class="logo-text">CarMotion</div>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search...">
+    </div>
+  </nav>
+
+  <!-- Page Content Placeholder (for demo purpose) -->
+  <div style="margin-top: 80px; padding: 50px;">
+    <h1 style="color: white;">Welcome to CarMotion</h1>
+    <p style="color: white;">Explore our amazing car dealership services and offerings!</p>
+  </div>
+
+  <!-- JavaScript for Interactivity -->
+  <script>
+    // Handle search input focus
+    const searchInput = document.querySelector('.search-input');
+    searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+          alert(`Searching for: ${query}`);
+          searchInput.value = ''; // Clear the search input after "search"
+        }
+      }
+    });
+
+    // Click outside to collapse the search bar
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.search-container')) {
+        searchInput.blur();
+        searchInput.value = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
